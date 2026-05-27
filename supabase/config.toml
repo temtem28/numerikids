@@ -1,0 +1,22 @@
+# Configuration Supabase (optionnel)
+# Généré pour le déploiement des Edge Functions.
+# Pour lier le projet : supabase link --project-ref VOTRE_PROJECT_REF
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+
+[studio]
+enabled = true
+port = 54323
+
+[functions]
+# Désactiver la vérification JWT pour le webhook Stripe (appelé par Stripe, pas par le frontend)
+[functions.stripe-webhook]
+verify_jwt = false

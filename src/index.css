@@ -1,0 +1,329 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 23% 95%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 240 50% 6%;
+    --foreground: 180 100% 90%;
+
+    --card: 240 45% 8%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 240 45% 8%;
+    --popover-foreground: 180 100% 90%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 240 50% 6%;
+
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 180 100% 90%;
+
+    --muted: 240 40% 15%;
+    --muted-foreground: 200 20% 65%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 180 100% 90%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 180 100% 90%;
+
+    --border: 240 40% 20%;
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-fall {
+  animation: fall 2s ease-in forwards;
+}
+
+    --ring: 189 94% 43%;
+
+    --sidebar-background: 240 45% 10%;
+    --sidebar-foreground: 180 100% 90%;
+    --sidebar-primary: 189 94% 43%;
+    --sidebar-primary-foreground: 240 50% 6%;
+    --sidebar-accent: 240 40% 15%;
+    --sidebar-accent-foreground: 180 100% 90%;
+    --sidebar-border: 240 40% 20%;
+    --sidebar-ring: 189 94% 43%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans dark:bg-background dark:text-foreground;
+  }
+
+  pre, code {
+    @apply font-mono;
+  }
+}
+
+.markdown-editor {
+  @apply font-mono text-base leading-relaxed;
+}
+
+.markdown-preview {
+  @apply prose max-w-none prose-blue dark:prose-invert;
+}
+
+.markdown-preview pre {
+  @apply bg-secondary p-4 rounded-md overflow-x-auto;
+}
+
+.markdown-preview code {
+  @apply text-sm font-mono text-primary;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  @apply font-sans font-semibold text-foreground;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply my-4 ml-6;
+  @apply my-4 ml-6;
+}
+
+/* Neon Glow Effects */
+.neon-text {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.8),
+               0 0 20px rgba(6, 182, 212, 0.6),
+               0 0 30px rgba(6, 182, 212, 0.4);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5),
+              0 0 20px rgba(6, 182, 212, 0.3),
+              inset 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.6),
+              0 0 40px rgba(6, 182, 212, 0.4),
+              0 0 60px rgba(6, 182, 212, 0.2);
+}
+
+/* Starfield Animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Gradient Background */
+.cyber-gradient {
+  background: linear-gradient(135deg, #0a0e27 0%, #1e1b4b 50%, #312e81 100%);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #6b21a8 100%);
+}
+
+
+/* Success Animation Keyframes */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes star-burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.2) rotate(72deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ring-burst {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes ring-burst-delayed {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-confetti-fall {
+  animation: confetti-fall linear forwards;
+}
+
+.animate-sparkle {
+  animation: sparkle ease-in-out infinite;
+}
+
+.animate-star-burst {
+  animation: star-burst ease-out forwards;
+}
+
+.animate-ring-burst {
+  animation: ring-burst 1s ease-out forwards;
+}
+
+.animate-ring-burst-delayed {
+  animation: ring-burst-delayed 1.5s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
