@@ -77,4 +77,8 @@ ALTER TABLE profiles ADD COLUMN IF NOT EXISTS last_password_change TIMESTAMPTZ D
 ALTER TABLE profiles ADD COLUMN IF NOT EXISTS security_score INTEGER DEFAULT 0;
 
 -- Add is_active column to user_sessions for easier querying
-ALTER TABLE user_sessions ADD COLUMN IF NOT EXISTS is_active BOOLEAN GENERATED ALWAYS AS (revoked_at IS NULL AND expires_at > NOW()) STORED;
+-- is_active est calculé dynamiquement plutôt qu'en colonne générée (NOW() n'est pas immutable)
+ALTER TABLE user_sessions ADD COLUMN IF NOT EXISTS is_active BOOLEAN DEFAULT TRUE;
+CREATE OR REPLACE VIEW public.active_user_sessions AS
+  SELECT *, (revoked_at IS NULL AND (expires_at IS NULL OR expires_at > NOW())) AS computed_is_active
+  FROM user_sessions;
